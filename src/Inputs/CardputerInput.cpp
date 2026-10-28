@@ -48,13 +48,10 @@ char CardputerInput::handler() {
 }
 
 void CardputerInput::waitPress() {
-  while(1){
+  while (true) {
     M5Cardputer.update();
-    if (M5Cardputer.Keyboard.isChange()) {
-      if (M5Cardputer.Keyboard.isPressed()) {
-        Keyboard_Class::KeysState status = M5Cardputer.Keyboard.keysState();
-        return;
-      }
+    if (M5Cardputer.BtnA.isPressed() || M5Cardputer.Keyboard.isPressed()) {
+      return;
     }
     delay(10);
   }
